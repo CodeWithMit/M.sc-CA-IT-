@@ -1,0 +1,300 @@
+SQL> UPDATE BCUSTOMER SET CNUM=2004 WHERE NAME='GOVIND';
+UPDATE BCUSTOMER SET CNUM=2004 WHERE NAME='GOVIND'
+                                     *
+ERROR at line 1:
+ORA-00904: "NAME": invalid identifier
+
+
+SQL> UPDATE BCUSTOMER SET CNUM=2004 WHERE CNAME='GOVIND';
+
+1 row updated.
+
+SQL> UPDATE BCUSTOMER SET CNUM=2005 WHERE CNAME='CHANDRESH';
+
+1 row updated.
+
+SQL> UPDATE BCUSTOMER SET CNUM=2006 WHERE CNAME='CHAMPAK';
+
+1 row updated.
+
+SQL> UPDATE BCUSTOMER SET CNUM=2007 WHERE CNAME='PRATIK';
+
+1 row updated.
+
+SQL> SELECT * FROM BCUSTOMER;
+
+      CNUM CNAME      CITY           RATING       SNUM
+---------- ---------- ---------- ---------- ----------
+      2001 HARDIK     LONDON            100       1001
+      2002 GITA       ROME              200       1003
+      2003 LAXIT      SURAT             200       1002
+      2004 GOVIND     BOMBAY            300       1002
+      2005 CHANDRESH  LONDON            100       1001
+      2006 CHAMPAK    SURAT             300       1007
+      2007 PRATIK     ROME              100       1004
+      2008 MANOJ      LONDON            200       1007
+
+8 rows selected.
+
+SQL> SELECT * FROM BSELESMAN;
+SELECT * FROM BSELESMAN
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> SELECT * FROM BSALESMAN;
+
+no rows selected
+
+SQL> DESC BSALESMAN;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SNUM                                               NUMBER(4)
+ SNAME                                              VARCHAR2(10)
+ CITE                                               VARCHAR2(10)
+ COMMISSION                                         NUMBER(2)
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID
+------------------------------ ------- ----------
+ACUSTOMER                      TABLE
+AORDERS                        TABLE
+ASALESMAN                      TABLE
+BCUSTOMER                      TABLE
+BORDER                         TABLE
+BSALESMAN                      TABLE
+CCUSTOMER                      TABLE
+CHODU                          TABLE
+CORDER                         TABLE
+CSALESMAN                      TABLE
+CUSTOMER77                     TABLE
+
+TNAME                          TABTYPE  CLUSTERID
+------------------------------ ------- ----------
+DATA                           TABLE
+EMP                            TABLE
+EMP01                          TABLE
+EMP1                           TABLE
+EMP162                         TABLE
+EMPLOYEE                       TABLE
+EMPLOYEE2                      TABLE
+EMPS                           TABLE
+GCUSTOMER                      TABLE
+GORDERS                        TABLE
+GSALESMAN                      TABLE
+
+TNAME                          TABTYPE  CLUSTERID
+------------------------------ ------- ----------
+KETBKP                         TABLE
+KETSPIN                        TABLE
+KETSTD                         TABLE
+LIBRARY                        TABLE
+MARKS                          TABLE
+ORDER77                        TABLE
+ORDERB                         TABLE
+OREDERS                        TABLE
+PSALESMAN                      TABLE
+RESULT                         TABLE
+SALESMAN77                     TABLE
+
+TNAME                          TABTYPE  CLUSTERID
+------------------------------ ------- ----------
+SALESMANB                      TABLE
+SEQTABLE                       TABLE
+STUD                           TABLE
+STUD1                          TABLE
+STUD162                        TABLE
+STUDENT                        TABLE
+STUDENT1                       TABLE
+STUDENT1BKP                    TABLE
+STUDENTB                       TABLE
+STUDRESTORE                    TABLE
+STUDUDENT1                     TABLE
+
+TNAME                          TABTYPE  CLUSTERID
+------------------------------ ------- ----------
+STUD_INFO                      TABLE
+USERTRACK                      TABLE
+
+46 rows selected.
+
+SQL> SELECT * FROM SALESMANB;
+
+no rows selected
+
+SQL> HELP
+
+ HELP
+ ----
+
+ Accesses this command line help system. Enter HELP INDEX or ? INDEX
+ for a list of topics.
+
+ You can view SQL*Plus resources at
+     http://www.oracle.com/technology/tech/sql_plus/
+ and the Oracle Database Library at
+     http://www.oracle.com/technology/documentation/
+
+ HELP|? [topic]
+
+
+SQL> DROP BSALESMAN;
+DROP BSALESMAN
+     *
+ERROR at line 1:
+ORA-00950: invalid DROP option
+
+
+SQL> DESC SALESMANB;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SNUM                                               NUMBER(4)
+ SNAME                                              VARCHAR2(10)
+ CITY                                               VARCHAR2(10)
+ COMMISION                                          NUMBER(10)
+
+SQL> INSERT INTO SALESMANB VALUE(&SUM,'&NAME','&CITY',&COMMISION);
+Enter value for sum: WW
+Enter value for name: W
+Enter value for city: W
+Enter value for commision: W
+old   1: INSERT INTO SALESMANB VALUE(&SUM,'&NAME','&CITY',&COMMISION)
+new   1: INSERT INTO SALESMANB VALUE(WW,'W','W',W)
+INSERT INTO SALESMANB VALUE(WW,'W','W',W)
+                               *
+ERROR at line 1:
+ORA-01747: invalid user.table.column, table.column, or column specification
+
+
+SQL> INSERT INTO SALESMANB VALUES(&SUM,'&NAME','&CITY',&COMMISION);
+Enter value for sum: 1001
+Enter value for name: PIYUSH
+Enter value for city: LONDON
+Enter value for commision: 12
+old   1: INSERT INTO SALESMANB VALUES(&SUM,'&NAME','&CITY',&COMMISION)
+new   1: INSERT INTO SALESMANB VALUES(1001,'PIYUSH','LONDON',12)
+
+1 row created.
+
+SQL> / RUN
+Enter value for sum: 1002
+Enter value for name: NIRAJ
+Enter value for city: SURAT
+Enter value for commision: 13
+old   1: INSERT INTO SALESMANB VALUES(&SUM,'&NAME','&CITY',&COMMISION)
+new   1: INSERT INTO SALESMANB VALUES(1002,'NIRAJ','SURAT',13)
+
+1 row created.
+
+SQL> / RUN
+Enter value for sum: 1003
+Enter value for name: MITI
+Enter value for city: LONDON
+Enter value for commision: 11
+old   1: INSERT INTO SALESMANB VALUES(&SUM,'&NAME','&CITY',&COMMISION)
+new   1: INSERT INTO SALESMANB VALUES(1003,'MITI','LONDON',11)
+
+1 row created.
+
+SQL> / RUN
+Enter value for sum: RAJESH
+Enter value for name: BORODA
+Enter value for city: 15
+Enter value for commision:
+old   1: INSERT INTO SALESMANB VALUES(&SUM,'&NAME','&CITY',&COMMISION)
+new   1: INSERT INTO SALESMANB VALUES(RAJESH,'BORODA','15',)
+INSERT INTO SALESMANB VALUES(RAJESH,'BORODA','15',)
+                                                  *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> / RUN
+Enter value for sum: 1004
+Enter value for name: RAJESH
+Enter value for city: BARODA
+Enter value for commision: 15
+old   1: INSERT INTO SALESMANB VALUES(&SUM,'&NAME','&CITY',&COMMISION)
+new   1: INSERT INTO SALESMANB VALUES(1004,'RAJESH','BARODA',15)
+
+1 row created.
+
+SQL> / RUN
+Enter value for sum: 1005
+Enter value for name: ANAND
+Enter value for city: NEW DELHI
+Enter value for commision: 10
+old   1: INSERT INTO SALESMANB VALUES(&SUM,'&NAME','&CITY',&COMMISION)
+new   1: INSERT INTO SALESMANB VALUES(1005,'ANAND','NEW DELHI',10)
+
+1 row created.
+
+SQL> / RUN
+Enter value for sum: 1006
+Enter value for name: RAM
+Enter value for city: PATAN
+Enter value for commision: 10
+old   1: INSERT INTO SALESMANB VALUES(&SUM,'&NAME','&CITY',&COMMISION)
+new   1: INSERT INTO SALESMANB VALUES(1006,'RAM','PATAN',10)
+
+1 row created.
+
+SQL> / RUN
+Enter value for sum: 1007
+Enter value for name: LAXMAN
+Enter value for city: BOMBAY
+Enter value for commision: 9
+old   1: INSERT INTO SALESMANB VALUES(&SUM,'&NAME','&CITY',&COMMISION)
+new   1: INSERT INTO SALESMANB VALUES(1007,'LAXMAN','BOMBAY',9)
+
+1 row created.
+
+SQL> SELECT * FROM SALESMANB;
+
+      SNUM SNAME      CITY        COMMISION
+---------- ---------- ---------- ----------
+      1001 PIYUSH     LONDON             12
+      1002 NIRAJ      SURAT              13
+      1003 MITI       LONDON             11
+      1004 RAJESH     BARODA             15
+      1005 ANAND      NEW DELHI          10
+      1006 RAM        PATAN              10
+      1007 LAXMAN     BOMBAY              9
+
+7 rows selected.
+
+SQL> SELECT * FROM BCUSTOMER;
+
+      CNUM CNAME      CITY           RATING       SNUM
+---------- ---------- ---------- ---------- ----------
+      2001 HARDIK     LONDON            100       1001
+      2002 GITA       ROME              200       1003
+      2003 LAXIT      SURAT             200       1002
+      2004 GOVIND     BOMBAY            300       1002
+      2005 CHANDRESH  LONDON            100       1001
+      2006 CHAMPAK    SURAT             300       1007
+      2007 PRATIK     ROME              100       1004
+      2008 MANOJ      LONDON            200       1007
+
+8 rows selected.
+
+SQL> SELECT * FROM BORDER;
+
+      ONUM     AMOUNT ODATE           CNUM       SNUM
+---------- ---------- --------- ---------- ----------
+      3001      18.69 03-MAR-99       2007       1007
+      3002     767.19 05-MAR-97       2001       1001
+      3003     1900.1 10-MAR-97       2007       1004
+      3004    5160.45 12-MAR-99       2003       1002
+      3005    1098.25 15-APR-99       2008       1007
+      3006    1713.12 10-APR-95       2002       1003
+      3007      75.75 20-MAY-96       2004       1002
+      3008       4723 30-MAY-99       2006       1001
+      3009    1309.95 08-MAY-97       2004       1002
+      3010    9898.87 06-JUN-99       2006       1001
+
+10 rows selected.
+
+SQL>
