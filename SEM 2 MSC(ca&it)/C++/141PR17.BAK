@@ -1,0 +1,24 @@
+#include<iostream.h>
+#include<conio.h>
+class area
+{
+int a;
+public:
+area(int l)
+{
+cout<<"area of square "<<l*l<<endl;
+}
+area(int l,int h)
+{
+
+cout<<"area of rectangle "<<l*h;
+}
+};
+main()
+{
+clrscr();
+area o1(5);
+area o2(5,10);
+getch();
+return 0;
+}

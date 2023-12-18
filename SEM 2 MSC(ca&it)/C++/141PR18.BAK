@@ -1,0 +1,31 @@
+#include<iostream.h>
+#include<conio.h>
+class copy
+{
+public:
+int id;
+copy(int a)
+{
+id=a;
+}
+copy(copy & c)
+{
+id=c.id;
+
+}
+void show()
+{
+cout<<"id="<<id<<endl;
+}
+};
+int main()
+{
+clrscr();
+copy x(10);
+copy y(x);
+x.show();
+y.show();
+getch();
+return 0;
+
+}

@@ -1,0 +1,29 @@
+#include<iostream.h>
+#include<conio.h>
+int count=0;
+class abc
+{
+public:
+abc()
+	{
+	count++;
+	cout<<"Constructer called "<<count<<endl;
+	}
+~abc()
+	{
+	count--;
+	cout<<"Disstructer called "<<count<<endl;
+
+	}
+};
+
+int main()
+{
+clrscr();
+abc c;
+{
+abc c2;
+}
+getch();
+return 0;
+}
