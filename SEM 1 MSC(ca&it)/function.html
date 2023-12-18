@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <script language="JavaScript">
+            function convert(f)
+            {
+                f=parseFloat(f);
+                c=(f-32)/1.8;
+                return c;
+            }
+        </script>
+    </head>
+    <body>
+        <script language="JavaScript">
+            var c,f;
+            f=prompt("Enter the fehrenheit","37");
+            c=convert(f);
+            document.write("Temperature was "+f+" Fahrenheit converted to " +"<b>"+c+" Celcius."+"</b>");
+        </script>
+    </body>
+</html>
