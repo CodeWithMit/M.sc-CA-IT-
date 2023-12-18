@@ -1,0 +1,66 @@
+#include<stdio.h>
+#include<conio.h>
+#define true 1
+#define fales 0
+void main()
+{
+	int i,k[100],n,lb,ub;
+	void quick(int k[],int lb,int ub);
+	clrscr();
+	printf("Enter Your limit=>");
+	scanf("%d",&n);
+	for(i=1;i<=n;i++)
+	{
+		scanf("%d",&k[i]);
+	}
+	lb=1;
+	ub=n;
+	quick(k,lb,ub);
+	printf("\n Output :=>");
+	for(i=1;i<=n;i++)
+	{
+		printf("%d ",k[i]);
+	}
+	getch();
+}
+void quick(int k[],int lb,int ub)
+{
+int pivot,i,j,flag,temp;
+flag=true;
+if(lb<ub)
+{
+i=lb;
+j=ub;
+pivot=k[lb];
+while(flag)
+{
+  i=i+1;
+  while(k[i]<pivot)
+  {
+   i++;
+   }
+   while(k[j]>pivot)
+   {
+   j--;
+   }
+   if(i<j)
+   {
+   temp=k[i];
+   k[i]=k[j];
+   k[j]=temp;
+   }
+   else
+   {
+   flag=fales;
+   temp=k[lb];
+   k[lb]=k[j];
+   k[j]=temp;
+   quick(k,lb,j-1);
+   quick(k,j+1,ub);
+   }
+
+
+}
+
+}
+}
